@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sakshi Sawant | AWS Cloud Engineer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#030914;
+    --bg2:#071322;
+    --card:rgba(10,25,43,.78);
+    --card2:rgba(7,19,34,.9);
+    --text:#f4f8ff;
+    --muted:#91a7bd;
+    --cyan:#55e7ff;
+    --blue:#619cff;
+    --purple:#a47dff;
+    --green:#55df9b;
+    --line:rgba(130,180,220,.15);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+
+body{
+    font-family:Inter,sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 8% 18%,rgba(0,188,255,.10),transparent 25%),
+        radial-gradient(circle at 92% 16%,rgba(131,83,255,.10),transparent 25%),
+        radial-gradient(circle at 50% 75%,rgba(0,115,255,.06),transparent 32%),
+        var(--bg);
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
+    background-size:70px 70px;
+    mask-image:linear-gradient(to bottom,black,transparent 85%);
+}
+
+a{text-decoration:none;color:inherit}
+.container{width:min(1060px,90%);margin:auto}
+
+/* NAV */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    height:74px;
+    z-index:1000;
+    background:rgba(3,9,20,.78);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--line);
+}
+
+.nav-inner{
+    height:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:-1px;
+}
+
+.logo span{color:var(--cyan)}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:32px;
+}
+
+.nav-links a{
+    color:#91a4b9;
+    font-size:14px;
+    transition:.25s;
+}
+
+.nav-links a:hover{color:white}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    padding:125px 0 65px;
+    display:flex;
+    align-items:center;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:55px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:8px 14px;
+    border-radius:50px;
+    border:1px solid rgba(85,231,255,.25);
+    background:rgba(85,231,255,.055);
+    color:var(--cyan);
+    font:500 11px "DM Mono",monospace;
+    letter-spacing:.5px;
+    margin-bottom:25px;
+}
+
+.live-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 14px var(--green);
+}
+
+.hero h1{
+    font-size:clamp(58px,7.2vw,88px);
+    line-height:.88;
+    letter-spacing:-6px;
+    margin-bottom:27px;
+}
+
+.gradient{
+    background:linear-gradient(100deg,var(--cyan),var(--blue),var(--purple));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero-description{
+    max-width:600px;
+    color:#9eb2c7;
+    font-size:15.5px;
+    line-height:1.75;
+    margin-bottom:25px;
+}
+
+.buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:12px 18px;
+    border-radius:11px;
+    border:1px solid var(--line);
+    font-size:13px;
+    font-weight:700;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    border-color:rgba(85,231,255,.35);
+}
+
+.btn-primary{
+    color:#02101a;
+    border:none;
+    background:linear-gradient(135deg,#55e7ff,#679eff);
+}
+
+/* TECH PILLS */
+
+.tech-pills{
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+    margin-top:22px;
+}
+
+.tech{
+    padding:7px 12px;
+    border:1px solid var(--line);
+    background:rgba(10,27,45,.6);
+    border-radius:9px;
+    font-size:11px;
+    color:#b9c9da;
+}
+
+.tech strong{color:white}
+
+/* PROFILE CARD */
+
+.profile-card{
+    width:100%;
+    max-width:375px;
+    justify-self:end;
+    padding:28px 27px 25px;
+    border-radius:22px;
+    border:1px solid rgba(85,231,255,.38);
+    background:
+        radial-gradient(circle at 80% 8%,rgba(85,231,255,.08),transparent 30%),
+        linear-gradient(145deg,rgba(13,32,53,.96),rgba(7,16,30,.96));
+    box-shadow:0 30px 90px rgba(0,0,0,.42),0 0 45px rgba(72,170,255,.07);
+    position:relative;
+}
+
+.profile-card:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:22px;
+    pointer-events:none;
+    background:
+        radial-gradient(circle at 85% 10%,rgba(85,231,255,.14) 1px,transparent 2px);
+    background-size:15px 15px;
+    opacity:.35;
+}
+
+.profile-photo{
+    position:relative;
+    z-index:1;
+    width:175px;
+    height:175px;
+    margin:0 auto 22px;
+    border-radius:50%;
+    padding:4px;
+    background:linear-gradient(135deg,var(--cyan),var(--blue),var(--purple));
+    box-shadow:0 0 35px rgba(85,231,255,.16);
+}
+
+.profile-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center top;
+    border-radius:50%;
+    display:block;
+    border:4px solid #071322;
+}
+
+.profile-info{
+    position:relative;
+    z-index:1;
+    text-align:center;
+}
+
+.profile-info h2{
+    font-size:20px;
+    letter-spacing:-.5px;
+}
+
+.profile-role{
+    margin-top:5px;
+    color:var(--cyan);
+    font:500 10px "DM Mono",monospace;
+    letter-spacing:1.5px;
+}
+
+.open{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:18px;
+    padding:8px 14px;
+    border-radius:50px;
+    border:1px solid rgba(164,125,255,.32);
+    background:linear-gradient(90deg,rgba(85,231,255,.08),rgba(164,125,255,.08));
+    font:500 10px "DM Mono",monospace;
+}
+
+.open span{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 10px var(--green);
+}
+
+/* STATS */
+
+.stats{
+    margin-top:55px;
+    border:1px solid rgba(85,231,255,.22);
+    border-radius:18px;
+    background:linear-gradient(90deg,rgba(9,27,47,.8),rgba(6,17,31,.85));
+    box-shadow:0 0 35px rgba(28,171,255,.05);
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    overflow:hidden;
+}
+
+.stat{
+    padding:20px 25px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    border-right:1px solid var(--line);
+}
+
+.stat:last-child{border-right:0}
+
+.stat-icon{
+    width:40px;
+    height:40px;
+    flex-shrink:0;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:rgba(70,150,255,.08);
+    border:1px solid rgba(70,150,255,.14);
+    font-size:18px;
+}
+
+.stat h3{font-size:25px;line-height:1}
+.stat p{font-size:10px;color:var(--muted);margin-top:4px}
+
+/* SECTIONS */
+
+section{padding:105px 0}
+
+.label{
+    color:var(--cyan);
+    font:500 11px "DM Mono",monospace;
+    letter-spacing:2px;
+    margin-bottom:8px;
+}
+
+.section-title{
+    font-size:clamp(32px,4.5vw,50px);
+    line-height:1;
+    letter-spacing:-3px;
+    margin-bottom:15px;
+}
+
+.section-text{
+    max-width:680px;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.8;
+    margin-bottom:38px;
+}
+
+/* ABOUT */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.about-heading{
+    max-width:450px;
+}
+
+.about-heading .section-title{
+    font-size:39px;
+}
+
+.about-heading .underline{
+    width:38px;
+    height:2px;
+    background:var(--cyan);
+    margin-top:23px;
+}
+
+.info-card{
+    padding:25px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:linear-gradient(145deg,rgba(13,31,51,.8),rgba(7,17,30,.75));
+}
+
+.info-card h3{
+    font-size:15px;
+    margin-bottom:10px;
+}
+
+.info-card p{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.8;
+}
+
+/* SKILLS */
+
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.skill{
+    min-height:175px;
+    padding:22px;
+    border:1px solid var(--line);
+    border-radius:17px;
+    background:var(--card2);
+    transition:.25s;
+}
+
+.skill:hover,.project:hover,.cert:hover{
+    transform:translateY(-5px);
+    border-color:rgba(85,231,255,.3);
+}
+
+.skill-icon{
+    font-size:25px;
+    margin-bottom:13px;
+}
+
+.skill h3{font-size:15px;margin-bottom:7px}
+.skill p{font-size:11px;color:var(--muted);line-height:1.7}
+
+/* PROJECTS */
+
+.projects-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:17px;
+}
+
+.project{
+    padding:26px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:var(--card);
+    transition:.25s;
+}
+
+.project-number{
+    color:var(--cyan);
+    font:500 10px "DM Mono",monospace;
+}
+
+.project h3{
+    font-size:19px;
+    margin:8px 0;
+}
+
+.project p{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.75;
+    margin-bottom:17px;
+}
+
+.tags{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+}
+
+.tag{
+    padding:5px 8px;
+    border-radius:6px;
+    background:rgba(97,156,255,.07);
+    border:1px solid rgba(97,156,255,.14);
+    color:#b9d2ef;
+    font:500 9px "DM Mono",monospace;
+}
+
+/* CERTIFICATES */
+
+.cert-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.cert{
+    padding:22px;
+    border:1px solid var(--line);
+    border-radius:17px;
+    background:var(--card);
+    transition:.25s;
+}
+
+.cert-icon{font-size:25px;margin-bottom:12px}
+.cert-provider{color:var(--cyan);font:500 9px "DM Mono",monospace;margin-bottom:6px}
+.cert h3{font-size:14px;line-height:1.5}
+.cert p{color:var(--muted);font-size:11px;margin-top:7px;line-height:1.65}
+
+/* JOURNEY */
+
+.journey{
+    padding:30px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    background:linear-gradient(145deg,rgba(13,31,51,.85),rgba(6,16,29,.85));
+}
+
+.journey-line{
+    display:flex;
+    gap:10px;
+    margin-top:30px;
+}
+
+.step{
+    flex:1;
+    text-align:center;
+}
+
+.step-icon{
+    width:43px;
+    height:43px;
+    margin:0 auto 9px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    border:1px solid rgba(85,231,255,.2);
+    background:rgba(85,231,255,.06);
+}
+
+.step h4{font-size:11px}
+.step p{font-size:9px;color:var(--muted);margin-top:3px}
+
+/* CONTACT */
+
+.contact{text-align:center}
+
+.contact-box{
+    padding:60px 25px;
+    border-radius:23px;
+    border:1px solid rgba(85,231,255,.22);
+    background:
+        radial-gradient(circle at 50% 0%,rgba(85,231,255,.1),transparent 45%),
+        rgba(10,25,43,.75);
+}
+
+.contact h2{
+    font-size:clamp(38px,5vw,62px);
+    line-height:.95;
+    letter-spacing:-4px;
+    margin-bottom:15px;
+}
+
+.contact p{
+    max-width:570px;
+    margin:0 auto 24px;
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid var(--line);
+    padding:23px 0;
+    color:#60788f;
+    font-size:10px;
+}
+
+.footer-inner{
+    display:flex;
+    justify-content:space-between;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+    .hero-grid,.about-grid{grid-template-columns:1fr}
+    .profile-card{justify-self:center}
+    .skills-grid{grid-template-columns:repeat(2,1fr)}
+    .cert-grid{grid-template-columns:repeat(2,1fr)}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(2){border-right:0}
+    .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+
+@media(max-width:620px){
+    .nav-links{display:none}
+    .hero{padding-top:110px}
+    .hero h1{font-size:57px;letter-spacing:-4px}
+    .profile-card{max-width:320px}
+    .profile-photo{width:145px;height:145px}
+    .stats,.skills-grid,.projects-grid,.cert-grid{grid-template-columns:1fr}
+    .stat{border-right:0;border-bottom:1px solid var(--line)}
+    .stat:last-child{border-bottom:0}
+    .journey-line{flex-direction:column;gap:18px}
+    section{padding:75px 0}
+    .footer-inner{flex-direction:column;gap:7px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="container nav-inner">
+    <a href="#home" class="logo">sakshi<span>.cloud</span></a>
+
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#credentials">Credentials</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="container">
+
+<div class="hero-grid">
+
+<div>
+    <div class="badge">
+        <span class="live-dot"></span>
+        BUILDING IN THE CLOUD
+    </div>
+
+    <h1>
+        AWS Cloud<br>
+        <span class="gradient">Engineer.</span>
+    </h1>
+
+    <p class="hero-description">
+        I'm Sakshi Sawant — a BSc IT graduate focused on AWS Cloud,
+        networking and Linux. I learn by building practical
+        infrastructure, troubleshooting real problems and documenting
+        what I build.
+    </p>
+
+    <div class="buttons">
+        <a href="#projects" class="btn btn-primary">🚀 Explore My Work</a>
+        <a href="https://github.com/sakshisawant12" target="_blank" class="btn">◉ GitHub ↗</a>
+    </div>
+
+    <div class="tech-pills">
+        <div class="tech">☁ <strong>AWS</strong></div>
+        <div class="tech">🐧 <strong>Linux</strong></div>
+        <div class="tech">🌐 <strong>Networking</strong></div>
+        <div class="tech">🛡 <strong>Security</strong></div>
+        <div class="tech">〉_ <strong>Bash</strong></div>
+    </div>
+</div>
+
+
+<!-- PROFILE -->
+<div class="profile-card">
+
+    <div class="profile-photo">
+        <img src="profile.jpg" alt="Sakshi Sawant - AWS Cloud Engineer">
+    </div>
+
+    <div class="profile-info">
+        <h2>Sakshi Sawant</h2>
+        <div class="profile-role">AWS CLOUD ENGINEER</div>
+
+        <div class="open">
+            <span></span>
+            OPEN TO OPPORTUNITIES
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- STATS -->
+<div class="stats">
+
+    <div class="stat">
+        <div class="stat-icon">☁</div>
+        <div>
+            <h3>6+</h3>
+            <p>AWS & Cloud Projects</p>
+        </div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-icon">🎓</div>
+        <div>
+            <h3>6</h3>
+            <p>Learning Credentials</p>
+        </div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-icon">☁</div>
+        <div>
+            <h3>AWS</h3>
+            <p>Primary Cloud Focus</p>
+        </div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-icon">∞</div>
+        <div>
+            <h3>∞</h3>
+            <p>Things Left To Build</p>
+        </div>
+    </div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+<div class="container">
+
+<div class="about-grid">
+
+<div class="about-heading">
+    <div class="label">ABOUT ME</div>
+
+    <h2 class="section-title">
+        From learning concepts
+        to building infrastructure.
+    </h2>
+
+    <div class="underline"></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+
+    <div class="info-card">
+        <h3>▣ What I Build</h3>
+        <p>
+            I build secure and reliable AWS environments using
+            services like EC2, S3, VPC, EBS, IAM and Load Balancers.
+        </p>
+    </div>
+
+    <div class="info-card">
+        <h3>▤ How I Learn</h3>
+        <p>
+            I learn by doing. I create environments, test them,
+            troubleshoot problems and document everything on GitHub.
+        </p>
+    </div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills">
+<div class="container">
+
+<div class="label">02 / TOOLKIT</div>
+
+<h2 class="section-title">The stack behind my cloud journey.</h2>
+
+<p class="section-text">
+A focused toolkit built around AWS Cloud, Networking and Linux.
+</p>
+
+<div class="skills-grid">
+
+<div class="skill">
+<div class="skill-icon">☁️</div>
+<h3>AWS Cloud</h3>
+<p>EC2, S3, VPC, EBS, IAM, ELB, Auto Scaling, CloudWatch, Route 53 and RDS.</p>
+</div>
+
+<div class="skill">
+<div class="skill-icon">🌐</div>
+<h3>Networking</h3>
+<p>TCP/IP, OSI, subnetting, routing, Security Groups, NACLs, NAT, IGW and VPC endpoints.</p>
+</div>
+
+<div class="skill">
+<div class="skill-icon">🐧</div>
+<h3>Linux</h3>
+<p>Red Hat and Ubuntu, SSH, permissions, packages, systemctl, disks and mounting.</p>
+</div>
+
+<div class="skill">
+<div class="skill-icon">🧑‍💻</div>
+<h3>Tools & Coding</h3>
+<p>GitHub, AWS CLI, Bash, Python basics, VS Code and Cisco Packet Tracer.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects">
+<div class="container">
+
+<div class="label">03 / SELECTED WORK</div>
+
+<h2 class="section-title">Projects that prove I build.</h2>
+
+<p class="section-text">
+Practical cloud projects based on real AWS infrastructure,
+networking, storage and security concepts.
+</p>
+
+<div class="projects-grid">
+
+<div class="project">
+<div class="project-number">PROJECT 01</div>
+<h3>AWS ELB + Auto Scaling</h3>
+<p>Scalable AWS compute setup using load balancing and Auto Scaling to improve availability.</p>
+<div class="tags">
+<span class="tag">EC2</span><span class="tag">ELB</span><span class="tag">AUTO SCALING</span>
+</div>
+</div>
+
+<div class="project">
+<div class="project-number">PROJECT 02</div>
+<h3>S3 Static Website Hosting</h3>
+<p>Hosted a static website with Amazon S3 and documented the deployment architecture.</p>
+<div class="tags">
+<span class="tag">S3</span><span class="tag">STATIC HOSTING</span><span class="tag">AWS</span>
+</div>
+</div>
+
+<div class="project">
+<div class="project-number">PROJECT 03</div>
+<h3>Enterprise AWS Secure Network</h3>
+<p>Designed public and private networking with routing and AWS security controls.</p>
+<div class="tags">
+<span class="tag">VPC</span><span class="tag">SUBNETS</span><span class="tag">NAT</span><span class="tag">SECURITY</span>
+</div>
+</div>
+
+<div class="project">
+<div class="project-number">PROJECT 04</div>
+<h3>Secure AWS Web Server</h3>
+<p>Red Hat EC2 web server with Security Groups, EBS mounted at /data and Apache hosting.</p>
+<div class="tags">
+<span class="tag">EC2</span><span class="tag">RED HAT</span><span class="tag">EBS</span><span class="tag">APACHE</span>
+</div>
+</div>
+
+<div class="project">
+<div class="project-number">PROJECT 05</div>
+<h3>AWS VPC Two-Tier Architecture</h3>
+<p>Secure public/private subnet architecture with routing, NAT and VPC endpoint concepts.</p>
+<div class="tags">
+<span class="tag">VPC</span><span class="tag">PRIVATE SUBNET</span><span class="tag">NAT</span><span class="tag">ENDPOINT</span>
+</div>
+</div>
+
+<div class="project">
+<div class="project-number">PROJECT 06</div>
+<h3>AWS EBS Storage Management</h3>
+<p>Attached, formatted, mounted and persistently configured EBS storage on Linux.</p>
+<div class="tags">
+<span class="tag">EBS</span><span class="tag">LINUX</span><span class="tag">MOUNT</span><span class="tag">FSTAB</span>
+</div>
+</div>
+
+</div>
+
+<br>
+
+<a href="https://github.com/sakshisawant12" target="_blank" class="btn btn-primary">
+View all projects on GitHub ↗
+</a>
+
+</div>
+</section>
+
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+<div class="container">
+
+<div class="label">04 / CREDENTIALS</div>
+
+<h2 class="section-title">Learning that supports the work.</h2>
+
+<p class="section-text">
+Cloud, networking, Python and practical job-simulation learning supporting my Cloud Engineer journey.
+</p>
+
+<div class="cert-grid">
+
+<div class="cert">
+<div class="cert-icon">☁️</div>
+<div class="cert-provider">AWS</div>
+<h3>AWS Cloud Practitioner Essentials</h3>
+<p>Cloud fundamentals, AWS services and core cloud concepts.</p>
+</div>
+
+<div class="cert">
+<div class="cert-icon">🌐</div>
+<div class="cert-provider">AWS</div>
+<h3>AWS Networking Basics</h3>
+<p>Networking foundations relevant to AWS infrastructure.</p>
+</div>
+
+<div class="cert">
+<div class="cert-icon">📘</div>
+<div class="cert-provider">AWS</div>
+<h3>AWS Knowledge: Cloud Essentials</h3>
+<p>Foundational AWS and cloud computing knowledge.</p>
+</div>
+
+<div class="cert">
+<div class="cert-icon">🔗</div>
+<div class="cert-provider">CISCO</div>
+<h3>Cisco Networking Basics</h3>
+<p>Core networking concepts and foundational network knowledge.</p>
+</div>
+
+<div class="cert">
+<div class="cert-icon">🐍</div>
+<div class="cert-provider">CISCO</div>
+<h3>Cisco Python Essentials 1</h3>
+<p>Python programming fundamentals and practical coding concepts.</p>
+</div>
+
+<div class="cert">
+<div class="cert-icon">💼</div>
+<div class="cert-provider">FORAGE</div>
+<h3>Datacom Cloud Job Simulation</h3>
+<p>Practical cloud simulation involving Azure, GitHub and workflow tasks.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- JOURNEY -->
+<section>
+<div class="container">
+
+<div class="journey">
+
+<div class="label">MY CLOUD JOURNEY</div>
+
+<h2 class="section-title">Learn → Build → Troubleshoot → Deploy</h2>
+
+<p class="section-text">
+My current path is focused on becoming strong in Cloud, Networking
+and Linux first, then moving toward more advanced areas.
+</p>
+
+<div class="journey-line">
+
+<div class="step">
+<div class="step-icon">📚</div>
+<h4>Learn</h4>
+<p>Cloud fundamentals</p>
+</div>
+
+<div class="step">
+<div class="step-icon">🧪</div>
+<h4>Build</h4>
+<p>Hands-on AWS</p>
+</div>
+
+<div class="step">
+<div class="step-icon">🔧</div>
+<h4>Troubleshoot</h4>
+<p>Solve real issues</p>
+</div>
+
+<div class="step">
+<div class="step-icon">📝</div>
+<h4>Document</h4>
+<p>GitHub projects</p>
+</div>
+
+<div class="step">
+<div class="step-icon">🚀</div>
+<h4>Deploy</h4>
+<p>Cloud infrastructure</p>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+<div class="container">
+
+<div class="contact-box">
+
+<div class="label">05 / LET'S CONNECT</div>
+
+<h2>Let's build<br>something in the cloud.</h2>
+
+<p>
+I'm looking for opportunities where I can grow as an AWS Cloud Engineer,
+work with real infrastructure and keep turning cloud concepts into practical solutions.
+</p>
+
+<div class="buttons" style="justify-content:center">
+
+<a href="https://github.com/sakshisawant12" target="_blank" class="btn btn-primary">
+GitHub ↗
+</a>
+
+<!-- Replace this URL with your real LinkedIn profile -->
+<a href="https://www.linkedin.com/" target="_blank" class="btn">
+LinkedIn ↗
+</a>
+
+</div>
+
+</div>
+</div>
+</section>
+
+
+<footer>
+<div class="container footer-inner">
+<span>© 2026 Sakshi Sawant</span>
+<span>AWS Cloud Engineer Portfolio</span>
+</div>
+</footer>
+
+</body>
+</html>
